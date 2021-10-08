@@ -385,9 +385,9 @@ void waitsec(void) {
 
 void send(int pos,int len) {
 	if (len) {
-		clkLow(0);
+		gpioWrite(4, 1);
 		usleep(len*100000);
-		clkHigh(0);
+		gpioWrite(4, 0);
 	}
 	printf("sent %d: %d\n",pos,len - 1);
 }
@@ -514,17 +514,9 @@ int main(int argc, char *argv[])
 
 	if (gpioInitialise() < 0) return 1;
 
-	//if ((rv=initClock(0, 1, 247, 3038, 1)) < 0) //77.5Khz
-	if ((rv=initClock(0, 2, 2787, 396, 1)) < 0) //77.5Khz
-	{
-		printf("initClock %d\n", rv);
-		return 1;
-	}
-	gpioSetMode(4, PI_ALT0);
-
+	gpioSetMode(4, PI_OUTPUT);
 	mainloop();
 	gpioSetMode(4, PI_INPUT);
 
-	termClock(0);
 	return 0;
 }
