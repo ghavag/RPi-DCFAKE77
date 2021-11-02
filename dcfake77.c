@@ -385,9 +385,9 @@ void waitsec(void) {
 
 void send(int pos,int len) {
 	if (len) {
-		gpioWrite(4, 1);
-		usleep(len*100000);
 		gpioWrite(4, 0);
+		usleep(len*100000);
+		gpioWrite(4, 1);
 	}
 	printf("sent %d: %d\n",pos,len - 1);
 }
