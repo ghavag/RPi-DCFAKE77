@@ -1,7 +1,6 @@
 /* DCFake77 */
 /* (c) 2016 Renzo Davoli. GPL v2+ */
 /* inspired from minimal_clock.c (public domain sw) */
-/* Source: http://www.raspibo.org/wiki/index.php?title=DCFake77:_How_to_radio-control_your_clock_by_yourself */
 
 #include <stdio.h>
 #include <stdlib.h>
